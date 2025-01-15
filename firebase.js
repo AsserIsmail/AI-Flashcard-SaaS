@@ -27,6 +27,6 @@ if (typeof window !== 'undefined') {
   });
 }
 // Initialize Firestore
-const db = getFirestore(app)
+export const db = getFirestore(app)
 export default {db, analytics}
 

@@ -9,14 +9,14 @@ const formatAmountForStripe = (amount) => {
 }
 
 export async function GET(req) {
-  const searchParams = req.nextUrl.searchParams
-  const session_id = searchParams.get('session_id')
+  const searchParams = req.nextUrl.searchParams // gets query string from the URL
+  const session_id = searchParams.get('session_id') // gets the session_id from the query string
 
   try {
     if (!session_id) {
       throw new Error('Session ID is required')
     }
-
+    // Retrieve the checkout session to display the details on the client
     const checkoutSession = await stripe.checkout.sessions.retrieve(session_id)
 
     return NextResponse.json(checkoutSession)
